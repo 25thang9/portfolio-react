@@ -1,9 +1,10 @@
+import { ThemeToggle } from './ThemeToggle.jsx';
 export default function Header() {
   return (
     <header className="site-header">
       <div className="container header-inner">
         <a className="logo" href="#home">
-          VTT
+          VTTT
         </a>
 
         <nav>
@@ -19,6 +20,7 @@ export default function Header() {
             </li>
           </ul>
         </nav>
+         <ThemeToggle />
       </div>
     </header>
   );

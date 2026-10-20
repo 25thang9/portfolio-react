@@ -1,3 +1,13 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-brand-50: #dcf4ef;
+  --color-brand-500: #0f8a80;
+  --color-brand-700: #0b6f68;
+}
+
 :root {
   --color-bg: #f6f1e8;
   --color-surface: #ffffff;
@@ -37,7 +47,11 @@ body {
   line-height: 1.7;
   color: var(--color-text);
   background:
-    radial-gradient(circle at 10% 0%, rgba(15, 138, 128, 0.08), transparent 28rem),
+    radial-gradient(
+      circle at 10% 0%,
+      rgba(15, 138, 128, 0.08),
+      transparent 28rem
+    ),
     var(--color-bg);
 }
 
@@ -89,7 +103,11 @@ textarea {
   border: 1px solid rgba(15, 138, 128, 0.12);
   border-radius: 0.9rem;
   color: var(--color-accent-dark);
-  background: linear-gradient(135deg, var(--color-accent-soft), #faf8f2);
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-soft),
+    #faf8f2
+  );
   box-shadow: 0 5px 14px rgba(15, 138, 128, 0.09);
   font-size: 1.08rem;
   font-weight: 800;
@@ -114,7 +132,10 @@ textarea {
   color: var(--color-text);
   font-weight: 700;
   text-decoration: none;
-  transition: color 0.18s ease, background-color 0.18s ease, transform 0.18s ease;
+  transition:
+    color 0.18s ease,
+    background-color 0.18s ease,
+    transform 0.18s ease;
 }
 
 .nav-list a::after {
@@ -156,7 +177,11 @@ textarea {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background:
-    linear-gradient(135deg, rgba(255, 253, 248, 0.99), rgba(247, 243, 235, 0.97));
+    linear-gradient(
+      135deg,
+      rgba(255, 253, 248, 0.99),
+      rgba(247, 243, 235, 0.97)
+    );
   box-shadow: var(--shadow-sm);
 }
 
@@ -220,7 +245,11 @@ h2::after {
   width: 3.2rem;
   height: 0.25rem;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--color-accent), #55c9bd);
+  background: linear-gradient(
+    90deg,
+    var(--color-accent),
+    #55c9bd
+  );
 }
 
 h3 {
@@ -243,12 +272,19 @@ button {
   border-radius: 0.85rem;
   padding: 0.8rem 1.2rem;
   color: var(--color-button-text);
-  background: linear-gradient(135deg, var(--color-button-bg), var(--color-button-bg-strong));
+  background: linear-gradient(
+    135deg,
+    var(--color-button-bg),
+    var(--color-button-bg-strong)
+  );
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
   box-shadow: 0 7px 18px rgba(15, 138, 128, 0.16);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
 }
 
 .button:hover,
@@ -267,7 +303,9 @@ button:hover {
   border-radius: 1.8rem;
   outline: 1px solid var(--color-border);
   box-shadow: var(--shadow-md);
-  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
 }
 
 .profile-image:hover {
@@ -299,10 +337,17 @@ button:hover {
   border: 1px solid var(--color-border);
   border-radius: 999px;
   color: var(--color-accent-dark);
-  background: linear-gradient(180deg, var(--color-surface), var(--color-surface-soft));
+  background: linear-gradient(
+    180deg,
+    var(--color-surface),
+    var(--color-surface-soft)
+  );
   box-shadow: 0 5px 15px rgba(20, 33, 43, 0.05);
   font-weight: 700;
-  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
 }
 
 .tags li:hover {
@@ -332,12 +377,17 @@ button:hover {
   background: var(--color-surface);
   box-shadow: 0 5px 15px rgba(20, 33, 43, 0.05);
   outline: none;
-  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
 }
 
 .project-search input:focus {
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(15, 138, 128, 0.13), 0 7px 18px rgba(20, 33, 43, 0.06);
+  box-shadow:
+    0 0 0 3px rgba(15, 138, 128, 0.13),
+    0 7px 18px rgba(20, 33, 43, 0.06);
   transform: translateY(-1px);
 }
 
@@ -359,65 +409,11 @@ button:hover {
 .filters button:hover {
   border-color: var(--color-accent);
   color: var(--color-button-text);
-  background: linear-gradient(135deg, var(--color-button-bg), var(--color-button-bg-strong));
-}
-
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
-  gap: 1.15rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.card {
-  position: relative;
-  min-height: 10.2rem;
-  overflow: hidden;
-  padding: 1.55rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background:
-    linear-gradient(180deg, var(--color-surface), rgba(244, 239, 230, 0.66));
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 0.3rem;
-  background: linear-gradient(90deg, var(--color-accent), #55c9bd);
-}
-
-.card::after {
-  content: "";
-  position: absolute;
-  right: -2.5rem;
-  bottom: -2.5rem;
-  width: 6rem;
-  height: 6rem;
-  border-radius: 50%;
-  background: rgba(15, 138, 128, 0.05);
-}
-
-.card:hover {
-  border-color: rgba(18, 129, 120, 0.36);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(24, 39, 34, 0.08);
-}
-
-.project-tags {
-  position: relative;
-  z-index: 1;
-  margin: 0;
-  color: var(--color-accent);
-  font-size: 0.94rem;
-  font-weight: 700;
+  background: linear-gradient(
+    135deg,
+    var(--color-button-bg),
+    var(--color-button-bg-strong)
+  );
 }
 
 #contact > p {
@@ -451,7 +447,10 @@ button:hover {
   border-radius: 0.75rem;
   color: var(--color-text);
   background: #fffdf8;
-  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
 }
 
 .contact-form input:focus,
@@ -605,7 +604,6 @@ button:hover {
 
   .button,
   button,
-  .card,
   .nav-list a,
   .nav-list a::after,
   .theme-bulb,
@@ -639,8 +637,13 @@ button:hover {
 .theme-bulb {
   font-size: 1.35rem;
   line-height: 1;
-  filter: drop-shadow(0 0 5px rgba(245, 180, 55, 0.45));
-  transition: opacity 0.18s ease, filter 0.18s ease, transform 0.18s ease;
+  filter: drop-shadow(
+    0 0 5px rgba(245, 180, 55, 0.45)
+  );
+  transition:
+    opacity 0.18s ease,
+    filter 0.18s ease,
+    transform 0.18s ease;
 }
 
 .theme-toggle:hover .theme-bulb {
@@ -694,7 +697,11 @@ button:hover {
 
 .dark body {
   background:
-    radial-gradient(circle at 10% 0%, rgba(96, 224, 208, 0.08), transparent 30rem),
+    radial-gradient(
+      circle at 10% 0%,
+      rgba(96, 224, 208, 0.08),
+      transparent 30rem
+    ),
     var(--color-bg);
 }
 
@@ -705,13 +712,21 @@ button:hover {
 
 .dark .logo {
   border-color: rgba(96, 224, 208, 0.08);
-  background: linear-gradient(135deg, #173c38, #194640);
+  background: linear-gradient(
+    135deg,
+    #173c38,
+    #194640
+  );
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
 }
 
 .dark .hero {
   background:
-    linear-gradient(135deg, rgba(19, 34, 39, 0.98), rgba(16, 29, 34, 0.98));
+    linear-gradient(
+      135deg,
+      rgba(19, 34, 39, 0.98),
+      rgba(16, 29, 34, 0.98)
+    );
 }
 
 .dark .hero::before {
@@ -723,7 +738,11 @@ button:hover {
 }
 
 .dark .tags li {
-  background: linear-gradient(180deg, #142429, #17302f);
+  background: linear-gradient(
+    180deg,
+    #142429,
+    #17302f
+  );
 }
 
 .dark .project-search input,
@@ -755,19 +774,12 @@ button:hover {
 
 .dark .theme-bulb {
   opacity: 0.52;
-  filter: grayscale(1) drop-shadow(0 0 0 transparent);
+  filter: grayscale(1)
+    drop-shadow(0 0 0 transparent);
 }
 
 .dark .theme-toggle:hover .theme-bulb {
   opacity: 0.8;
-}
-
-.dark .card {
-  background: linear-gradient(180deg, #142429, #112126);
-}
-
-.dark .card:hover {
-  border-color: #3f746f;
 }
 
 .dark .site-footer {
@@ -776,4 +788,10 @@ button:hover {
 
 .dark .form-status.error {
   color: #fca5a5;
+}
+
+.skeleton {
+  height: 3rem;
+  margin: 0.5rem 0;
+  background: #e2e8f0;
 }

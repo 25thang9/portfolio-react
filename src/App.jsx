@@ -6,6 +6,7 @@ import TagFilter from './components/TagFilter.jsx';
 import ProjectList from './components/ProjectList.jsx';
 import ContactForm from './components/ContactForm.jsx';
 import './index.css';
+import { GitHubRepos } from './components/GitHubRepos.jsx';
 
 export default function App() {
   const [activeTag, setActiveTag] =
@@ -59,6 +60,11 @@ export default function App() {
 
           <ContactForm />
         </section>
+ <section id="repos" className="section">
+  <h2>Repo GitHub</h2>
+
+  <GitHubRepos username="25thang9" />
+</section>
       </main>
     </>
   );
