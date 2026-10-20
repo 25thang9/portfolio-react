@@ -1,8 +1,11 @@
 import { useState } from 'react';
 
 export default function ContactForm() {
-  const [form, setForm] =
-    useState({ name: '', email: '' });
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
 
   const [errors, setErrors] = useState({});
   const [sent, setSent] = useState(false);
@@ -12,7 +15,7 @@ export default function ContactForm() {
 
     setForm((old) => ({
       ...old,
-      [name]: value
+      [name]: value,
     }));
 
     setSent(false);
@@ -31,17 +34,29 @@ export default function ContactForm() {
       next.email = 'Email chưa hợp lệ';
     }
 
+    if (form.message.trim().length < 10) {
+      next.message =
+        'Nội dung phải có ít nhất 10 ký tự';
+    }
+
     setErrors(next);
-    setSent(Object.keys(next).length === 0);
+
+    if (Object.keys(next).length === 0) {
+      setSent(true);
+    } else {
+      setSent(false);
+    }
   }
 
   return (
     <form
-      className="contact"
+      className="contact-form"
       onSubmit={submit}
       noValidate
     >
-      <label htmlFor="name">Họ tên</label>
+      <label htmlFor="name">
+        Họ tên
+      </label>
 
       <input
         id="name"
@@ -51,12 +66,14 @@ export default function ContactForm() {
       />
 
       {errors.name && (
-        <p className="error">
+        <p className="form-status error">
           {errors.name}
         </p>
       )}
 
-      <label htmlFor="email">Email</label>
+      <label htmlFor="email">
+        Email
+      </label>
 
       <input
         id="email"
@@ -67,8 +84,26 @@ export default function ContactForm() {
       />
 
       {errors.email && (
-        <p className="error">
+        <p className="form-status error">
           {errors.email}
+        </p>
+      )}
+
+      <label htmlFor="message">
+        Nội dung
+      </label>
+
+      <textarea
+        id="message"
+        name="message"
+        rows="5"
+        value={form.message}
+        onChange={update}
+      />
+
+      {errors.message && (
+        <p className="form-status error">
+          {errors.message}
         </p>
       )}
 
@@ -77,7 +112,9 @@ export default function ContactForm() {
       </button>
 
       {sent && (
-        <p>Gửi thành công!</p>
+        <p className="form-status success">
+          Gửi thành công!
+        </p>
       )}
     </form>
   );

@@ -1,37 +1,65 @@
 import { useState } from 'react';
 import { projects } from './data/projects.js';
-import ProjectList from './components/ProjectList.jsx';
+import Header from './components/Header.jsx';
+import Hero from './components/Hero.jsx';
 import TagFilter from './components/TagFilter.jsx';
+import ProjectList from './components/ProjectList.jsx';
 import ContactForm from './components/ContactForm.jsx';
 import './index.css';
 
 export default function App() {
-  const [activeTag, setActiveTag] = useState('all');
+  const [activeTag, setActiveTag] =
+    useState('all');
 
-  const tags = [...new Set(
-    projects.flatMap((p) => p.tags),
-  )];
+  const tags = [
+    ...new Set(
+      projects.flatMap((p) => p.tags),
+    ),
+  ];
 
-  const shown = activeTag === 'all'
-    ? projects
-    : projects.filter((p) => p.tags.includes(activeTag));
+  const shown =
+    activeTag === 'all'
+      ? projects
+      : projects.filter((p) =>
+          p.tags.includes(activeTag),
+        );
 
-return (
-  <main className="container">
-    <h1>Dự án của mình</h1>
+  return (
+    <>
+      <Header />
 
-    <TagFilter
-      tags={tags}
-      activeTag={activeTag}
-      onChange={setActiveTag}
-    />
+      <main className="container">
+        <Hero />
 
-    <ProjectList projects={shown} />
+        <section
+          id="projects"
+          className="section"
+        >
+          <h2>Dự án của mình</h2>
 
-    <section id="contact">
-      <h2>Liên hệ</h2>
-      <ContactForm />
-    </section>
-  </main>
-);
+          <TagFilter
+            tags={tags}
+            activeTag={activeTag}
+            onChange={setActiveTag}
+          />
+
+          <ProjectList projects={shown} />
+        </section>
+
+        <section
+          id="contact"
+          className="section"
+        >
+          <h2>Liên hệ</h2>
+
+          <p>
+            Bạn có thể gửi thông tin cho mình
+            bằng biểu mẫu bên dưới.
+          </p>
+
+          <ContactForm />
+        </section>
+      </main>
+    </>
+  );
 }
